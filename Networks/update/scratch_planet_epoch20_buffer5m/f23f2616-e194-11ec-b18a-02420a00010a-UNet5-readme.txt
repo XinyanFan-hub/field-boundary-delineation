@@ -1,0 +1,31 @@
+
+Training configuration
+================================
+Network
+    UUID:               f23f2616-e194-11ec-b18a-02420a00010a
+    Name:               UNet5
+    Optimizer:          Adam
+
+Parameters
+    Bands:              4
+    Classes:            2
+    Epochs:             20
+    Batch Size:         8
+
+Optimizer (Adam)
+    Learning Rate:      0.0015
+    Beta 1:             0.9
+    Beta 2:             0.999
+    Epsilon:            1e-06
+    
+Execution summary
+    Patches:            100
+    Validation Split:   0.05
+    Resolution (px):    256x256
+    Bands:              4
+    Classes:            1
+
+Training Set:
+    (vietnam, 0)
+Test Set:
+    (vietnam, 1)
