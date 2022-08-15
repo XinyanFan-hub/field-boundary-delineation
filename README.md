@@ -1,60 +1,31 @@
-# Automatic Delineation of Agricultural Fields from Sentinel-2 Images
+# Field Boundary Mapping in Small Scale Farming using Multi-Resolution Satellite Data
+## _A Case Study in Cambodia and Viet Nam_
 
-This repository is dedicated to the results of a group assignment of one of the
-minors at the University of Twente.
-The aim of the assignment was to train a fully convolutional neural network to
-precisely predict the boundaries of agricultural fields.
+##
+|Authors|Xinyan Fan, Claudia Paris, and Claudio Persello|
+|---|---|
+|Contacts |x.fan-1@utwente.nl|
+|Version|0.1 |
 
+## Project Overview
+The monitoring and mapping of agricultural fields via satellite imagery are crucial to sustainable agricultural management, especially for developing countries. The project is aimed at developing automatic workflows for mapping rice field boundaries in small-scale farming, using advanced image processing and deep learning neural networks.
+The workflow has been developed in the context of the project “Developing a spatially-explicit agricultural database in support of agricultural planning”, supported by the Ministry of Agriculture, Forestry and Fisheries (MAFF) of Japan and implemented by the Statistics Division of the Food and Agriculture Organization (FAO) of the United Nations.
 
-The implementation is split into three different Jupyter notebooks. The code is
-designed to run on [Google Colab](https://colab.research.google.com/).
+## The workflow
+The workflow consists of the following steps:
+- Pre-training the U-Net model on publicly available datasets
+- Fine-tuning the U-Net on a small local training dataset
+- Applying watershed transform to obtain closed segments
+- Producing the geodatabase of crop polygons and evaluating performance by computing PoLiS distance metric
 
-It is split into three different notebooks. All code files are well documented.
+The implementation of the workflow is split into the following three Jupyter notebooks and set up to run on various cloud platforms such as [Google Colab](https://colab.research.google.com/) and the Geospatial Computing Platform [CRIB](https://crib.utwente.nl/) of the University of Twente.
 
-
-**network-training.ipynb**
-
-This notebook is desinged to train a network with a given configuration.
-
-
-**network-testing.ipynb**
-
-Includes the accuracy assessment as well as sample outputs of the training data
-set of a trained network.
-
-
-**network-prediction.ipynb**
-
-Used to predict the field boundaries with the help of a pretrained network.
-The field boundaries are stored as TIF files. The predictions of the three FCNs
-which are considered in the paper are all included in the related data set.
-
-The data set is available online: [doi.org/10.17026/dans-za6-m8t7](https://doi.org/10.17026/dans-za6-m8t7)
+- ***network-training.ipynb*** trains a network with a given configuration
+- ***network-testing.ipynb*** includes the accuracy assessment as well as the sample outputs from the training dataset
+- ***network-prediction.ipynb*** predicts the field boundaries (stored as TIF images with geolocations) using a pretrained network.
 
 
-
-## FCNs
-
-Apart from the paper, the repository also contains the differently trained
-networks.
-Each network was trained with 600 epochs each.
-The digit, behind the network's name defines the number of layers that were used
-to train the network.
-As one can derive from the folder names, the chosen networks of this assignment
-are the [FCN-DK](https://ieeexplore.ieee.org/document/8094993) network as well
-as [U-Net](https://arxiv.org/pdf/1505.04597.pdf).
-
-
-## Data set
-
-The data set is published under creative-common terms CC-BY-4.0.
-Details can be found in the LICENSE file of the data set.
-The link to the data set will be published soon.
-
-
-## Group Members / Contributors
-
-The group consists of the following members:
+It should be noted that the code is extended from the results of a student assignment in one of the minors at the University of Twente. We thank the following students for their contribution to the original version of the code.
 
 * Floor Stefess
 * Lars van der Velde
@@ -64,17 +35,23 @@ The group consists of the following members:
 * Paula Janeka
 * Simonas Budėjis
 
-Also, we would like to acknowledge our supervisor [Claudio Persello](https://research.utwente.nl/en/persons/claudio-persello).
 
+## Case studies
 
-## Contact/Feedback
+The automatic boundary delineation is carried out for rice fields in Cambodia and Viet Nam, where rice paddy occupies a large portion of the agricultural area. The obtained geospatial database of rice farms will be used to increase the availability and quality of farmland information to:
 
-We will be happy to answer feedback, questions and bug reports.
-Either contact [Max Resing](https://www.maxresing.de/contact.html) or [open an issue](https://github.com/resingm/field-boundary-delineation/issues/new).
+- definition of effective schemes of farming incentives,
+- support the formulation of smart agriculture programs, and
+- improve reporting on Sustainable Development Goal (SDG) 2.4.1 for sustainable agriculture. 
 
+A tailored workflow should be developed in order to address two main challenges: (1) the lack of high-quality reference (label) data, and (2) the fragmented agricultural areas characterized by very small fields (i.e., less than 1 ha). 
 
-# License
+## Data set
+All the data sets are available online. They include:
+- Multi-resolution earth observation data: [Sentinel-2 and PlanetScope](https://surfdrive.surf.nl/files/index.php/s/Euh88Cl15jRbq7Y) 
+- Reference data: 
+    1. [Publicly available](https://surfdrive.surf.nl/files/index.php/s/Euh88Cl15jRbq7Y) crop boundaries dataset of approximately 1 million fields in the Netherlands for pre-training the network.
+    2. [Local training data set](https://surfdrive.surf.nl/files/index.php/s/Euh88Cl15jRbq7Y) of 3800 fields in Viet Nam generated by photo-interpretation from Worldview 2.  
 
-The code is published under the [GPL-3.0 license](https://www.gnu.org/licenses/gpl-3.0.en.html).
-Details can be found in the LICENSE file.
-
+## License
+The code is published under the [GPL-3.0 license](https://www.gnu.org/licenses/gpl-3.0.en.html). Details can be found in the LICENSE file.
