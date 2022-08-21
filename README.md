@@ -9,7 +9,7 @@
 
 ## Project Overview
 The monitoring and mapping of agricultural fields via satellite imagery are crucial to sustainable agricultural management, especially for developing countries. The project is aimed at developing automatic workflows for mapping rice field boundaries in small-scale farming, using advanced image processing and deep learning neural networks.
-The workflow has been developed in the context of the project “Developing a spatially-explicit agricultural database in support of agricultural planning”, supported by the Ministry of Agriculture, Forestry and Fisheries (MAFF) of Japan and implemented by the Statistics Division of the Food and Agriculture Organization (FAO) of the United Nations.
+The workflow has been developed in the context of the project "Developing a spatially-explicit agricultural database in support of agricultural planning", supported by the Ministry of Agriculture, Forestry and Fisheries (MAFF) of Japan and implemented by the Statistics Division of the Food and Agriculture Organization (FAO) of the United Nations.
 
 ## The workflow
 The workflow consists of the following steps:
